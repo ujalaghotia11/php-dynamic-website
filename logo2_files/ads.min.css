@@ -1,0 +1,50 @@
+/* for final sticky SB */
+.adthrive-sidebar.adthrive-stuck {
+margin-top: 100px;
+}
+/* for ESSAs */
+.adthrive-sticky-sidebar > div {
+top: 100px!important;
+}
+
+/* Top Center White Background */
+.adthrive-collapse-mobile-background {
+background-color: #fff!important;
+}
+.adthrive-top-collapse-close > svg > * {
+stroke: black;
+font-family: sans-serif;
+}
+.adthrive-top-collapse-wrapper-video-title,
+.adthrive-top-collapse-wrapper-bar a a.adthrive-learn-more-link {
+color: black!important;
+}
+/* END top center white background */
+
+body, html {
+    overflow-x: clip !important;
+}
+
+body.adthrive-device-desktop:not(.page-id-925):not(.page-id-220195) .adthrive-footer-message,
+body.adthrive-device-tablet:not(.page-id-925):not(.page-id-220195)  .adthrive-footer-message {
+    margin-bottom:0;
+    padding-bottom: 100px;
+}
+
+body.adthrive-device-phone:not(.page-id-925):not(.page-id-220195)  .adthrive-footer-message {
+    margin-bottom:0;
+    padding-bottom: 60px;
+}
+
+body.single .sb-slide {
+    -webkit-transform: none !important;
+    transform: none !important;
+}
+
+body.page:not(.home) .adthrive-content {
+    flex: 0 0 100%;
+}
+/*.adthrive-player-position.adthrive-collapse-mobile.adthrive-collapse-top-center.adthrive-player-without-wrapper-text, .adthrive-collapse-mobile-background {
+    top: 45px;
+}*/
+

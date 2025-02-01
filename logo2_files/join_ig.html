@@ -1,0 +1,56 @@
+
+<!-- saved from url=(0088)https://gpsb-reims.criteo.com/paapi/join_ig?advertiser_id=500002_500329&ig_name=r6NnpiEx -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible">
+        <meta name="description" content="Demo the various Permissions Policy features">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>Protected Audience Demo</title>
+
+        <link rel="stylesheet" href="./css(1)">
+        <link rel="stylesheet" href="./icon">
+        <link rel="stylesheet" href="./material.indigo-amber.min.css">
+    </head>
+
+    <body>
+        <script>
+          function JoinIg() {
+            let result = '';
+            let errorMessage = '';
+            
+            try {
+              const ONE_WEEK_IN_SECONDS = 60 * 60 * 24 * 7;
+              const interestGroup = JSON.parse('{"updateURL":"https://gpsb-reims.criteo.com/paapi/update_ig?context=NTAwMDAyXzUwMDMyOSNyNk5ucGlFeA","owner":"https://gpsb-reims.criteo.com","name":"NTAwMDAyXzUwMDMyOSNyNk5ucGlFeA","trustedBiddingSignalsKeys":["lambda"],"trustedBiddingSignalsURL":"https://gpsb-reims.criteo.com/paapi/getvalues","ads":[],"biddingLogicURL":"https://gpsb-reims.criteo.com/paapi/bid"}');
+              navigator.joinAdInterestGroup(interestGroup, ONE_WEEK_IN_SECONDS);
+              result = 'success';
+            } catch (error) {
+              result = 'fail';
+              errorMessage = encodeURIComponent(error.message);
+            }
+            
+            let url = new URL(window.location.href);
+            url.pathname = '/paapi/join_ig_result';
+
+            url.searchParams.set('result', result);
+            if (result === 'fail') {
+              url.searchParams.set('error', errorMessage);
+            }
+            if ('cookieDeprecationLabel' in navigator) {
+              navigator.cookieDeprecationLabel.getValue().then((label) => {
+                url.searchParams.set('cdep', encodeURIComponent(label));
+              });
+            }
+            fetch(url, {
+              method: 'GET'
+            })
+            .then(response => console.log('Request successful', response))
+            .catch(error => console.error('Request failed', error));
+          }
+          
+          if ('joinAdInterestGroup' in navigator) {
+            JoinIg();
+          }
+        </script>
+    
+    
+</body></html>
